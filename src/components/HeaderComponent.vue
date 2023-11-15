@@ -1,6 +1,9 @@
 <template>
-    <div class="py-3 ps-4 d-flex ">
-        <h1>ciao</h1>
+    <div class="py-3 ps-4 d-flex bg-dark ">
+        <div class="">
+            Boolflix
+        </div>
+        
     </div>
 </template>
   

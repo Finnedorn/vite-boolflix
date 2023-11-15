@@ -9,12 +9,29 @@ $fa-font-path: '../webfonts';
 
 ::-webkit-scrollbar {
     width: 5px;
+    background-color: $netflix-black;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: $light;
+    background-color: $netflix-light-brown;
 }
 
 img {
     width: 100%;
+}
+
+.text-my-red {
+    color: $netflix-red;
+}
+
+.bg-my-red {
+    background-color: $netflix-red;
+}
+
+.bg-my-black {
+    background-color: $netflix-black;
+}
+
+.bg-my-light-brown {
+    background-color: $netflix-light-brown;
 }

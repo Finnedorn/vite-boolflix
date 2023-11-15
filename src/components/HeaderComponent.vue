@@ -1,7 +1,7 @@
 <template>
-    <div class=" container-fluid bg-dark">
+    <div class=" container-fluid bg-my-black">
         <div class="py-4 ps-4 d-flex container align-items-center  justify-content-between ">
-            <h1 class="text-light">
+            <h1 class="text-my-red  fw-bolder ">
                 Boolflix
             </h1>
             <div class="input-group mb-3 w-25 ">
@@ -26,5 +26,6 @@
 </script>
   
 <style lang="scss" scoped>
+
   
 </style>

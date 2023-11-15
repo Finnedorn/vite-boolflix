@@ -44,6 +44,7 @@
           this.store.params.query = 'a';
         }
       }
+      
     },
     created() {
       this.getMoviesandSeries()

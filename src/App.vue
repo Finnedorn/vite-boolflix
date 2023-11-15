@@ -1,6 +1,5 @@
 <template>
-  <div>
-  </div>
+  <HeaderComponent/>
 </template>
 
 <script>
@@ -25,11 +24,11 @@
         this.store.movieList = resp.data.results;
         });
 
-        const seriesUrl= store.apiUrl + this.store.endPoint.series;
-        axios.get(seriesUrl, {params: this.store.params}).then((resp) => {
-        console.log(resp.data.results);
-        this.store.seriesList = resp.data.results;
-        })
+        // const seriesUrl= store.apiUrl + this.store.endPoint.series;
+        // axios.get(seriesUrl, {params: this.store.params}).then((resp) => {
+        // console.log(resp.data.results);
+        // this.store.seriesList = resp.data.results;
+        // })
       }
     },
   }

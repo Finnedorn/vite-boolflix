@@ -24,7 +24,6 @@
     export default {
         name: 'CardComponent',
         props: {
-            
             title: String,
             subtitle: String,
             language: String,

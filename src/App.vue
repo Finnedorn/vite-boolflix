@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent/>
+  <HeaderComponent @movie-searcher="getSearchedMovies"/>
   <MainComponent/>
 </template>
 
@@ -21,19 +21,28 @@
     },
     methods: {
       getMoviesandSeries() {
+        this.store.movieList = [];
+        this.store.seriesList =[];
         const movieUrl= store.apiUrl + this.store.endPoint.movie;
         axios.get(movieUrl, {params: this.store.params}).then((resp) => {
-        console.log(resp.data.results);
         this.store.movieList = resp.data.results;
-        console.log(this.store.movieList[0]);
-        });
+        console.log(this.store.movieList);
+        })
 
         const seriesUrl= store.apiUrl + this.store.endPoint.series;
         axios.get(seriesUrl, {params: this.store.params}).then((resp) => {
-        console.log(resp.data.results);
         this.store.seriesList = resp.data.results;
-        console.log(this.store.seriesList[0]);
+        console.log(this.store.seriesList);
         })
+      },
+      getSearchedMovies(search) {
+        console.log(search);
+        if(search) {
+          this.store.params.query = search;
+          this.getMoviesandSeries();
+        } else {
+          this.store.params.query = 'a';
+        }
       }
     },
     created() {

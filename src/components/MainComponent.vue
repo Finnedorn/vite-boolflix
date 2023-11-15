@@ -16,6 +16,7 @@
                         </h1>
                         <CardComponent v-for="(info,index) in store.seriesList" :key="index" :title="info.name" :subtitle="info.original_name" :language="info.original_language" :vote="info.vote_average"/>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -34,6 +35,10 @@
             return {
                 store
             }
+            
+        },
+        methods: {
+
         }
     }
 </script>

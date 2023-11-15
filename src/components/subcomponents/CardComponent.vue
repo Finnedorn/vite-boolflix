@@ -13,7 +13,7 @@
             <h5 class=" fw-light ">
                 {{ language }}
             </h5>
-            <div class=" fs-6 fw-light" ref="starsInput">
+            <div class=" fs-6 fw-light">
                 {{ vote / 2 }}
             </div>
         </div>
@@ -35,13 +35,13 @@
                 
             }
         },
-        methods: {
-            getStars() {
-                for(let i = 0; i < parseInt(this.vote); i++) {
-                    this.$refs.starsInput.append(<i class="fa-solid fa-star"></i>)
-                }
-            }
-        }
+        // methods: {
+        //     getStars() {
+        //         for(let i = 0; i < parseInt(this.vote); i++) {
+        //             this.$refs.starsInput.append(<i class="fa-solid fa-star"></i>)
+        //         }
+        //     }
+        // }
         
     }
 </script>

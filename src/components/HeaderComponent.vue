@@ -58,7 +58,7 @@ video {
 }
 
 .header-wrapper {
-    height: 800px;
+    height: 830px;
 }
 
 .logo-wrapper {

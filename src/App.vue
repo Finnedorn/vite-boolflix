@@ -53,5 +53,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+template {
+  width: 100%;
+  height: 100vh;
+}
 </style>

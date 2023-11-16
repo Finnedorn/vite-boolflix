@@ -10,12 +10,12 @@
             <h5 class=" fw-light ">
                 {{ subtitle }}
             </h5>
-            <h5 class=" fw-light ">
-                {{ language }}
-            </h5>
-            <div class=" fs-6 fw-light">
-                {{ vote / 2 }}
-            </div>
+            <p>
+                <img :src="getFlag" :alt="language + 'flag'" class="flag">
+            </p>
+            <p>
+                <i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getStars)? 'fa-solid' : 'fa-regular'"></i>
+            </p>
         </div>
     </div>
 </template>
@@ -32,9 +32,31 @@
         },
         data() {
             return {
-                
+                flags: [
+                    'ca',
+                    'de',
+                    'es',
+                    'fr',
+                    'gb',
+                    'it',
+                    'ja',
+                    'kr',
+                    'us'
+                ]
             }
         },
+        computed: {
+            getFlag() {
+                let flag = `/public/images/${this.language}.svg`;
+                if (!this.flags.includes(this.language)) {
+                    flag= '/public/images/imagemissing_92832.png';
+                }
+                return flag;
+            },
+            getStars() {
+                return Math.ceil(this.vote / 2);
+            }
+        }
         // methods: {
         //     getStars() {
         //         for(let i = 0; i < parseInt(this.vote); i++) {
@@ -47,4 +69,7 @@
 </script>
 
 <style lang="scss" scoped>
+img.flag {
+    width: 30px;
+}
 </style>

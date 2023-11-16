@@ -1,5 +1,5 @@
 <template>
-    <div class="col-2 ms-1 py-1">
+    <div class="col-2 card-wrapper">
         <div>
             <img :src="'http://image.tmdb.org/t/p/w342'+ source" :alt="title">
         </div>
@@ -57,14 +57,6 @@
                 return Math.ceil(this.vote / 2);
             }
         }
-        // methods: {
-        //     getStars() {
-        //         for(let i = 0; i < parseInt(this.vote); i++) {
-        //             this.$refs.starsInput.append(<i class="fa-solid fa-star"></i>)
-        //         }
-        //     }
-        // }
-        
     }
 </script>
 
@@ -72,4 +64,12 @@
 img.flag {
     width: 30px;
 }
+
+.card-wrapper:hover {
+    transform: translateY(-1rem);
+    transition: all 0.3s;
+}
+
+
+
 </style>

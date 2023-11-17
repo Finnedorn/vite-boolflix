@@ -4,52 +4,63 @@
     <div>
       <div class="container-fluid p-2 bg-my-black main-wrapper">
         <div class="container-fluid g-0">
+          <!--movies-->
           <div v-if="store.movieList.length > 1" class="position-relative">
             <h1 class="pt-4 text-light ms-5">
               Movies
             </h1>
-            <div @click="scrollLft('album')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
               <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
             </div>
-            <div @click="scrollRgt('album')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper" ref="album">
-                    <CardComponent
-                    v-for="(info, index) in store.movieList"
-                    :key="index"
-                    :source="info.poster_path"
-                    :title="info.title"
-                    :subtitle="info.original_title"
-                    :language="info.original_language"
-                    :vote="info.vote_average"
-                    :plot="info.overview"
-                    />
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper" ref="movieAlbum">
+              <CardComponent
+              v-for="(info, index) in store.movieList"
+              :key="index"
+              :source="info.poster_path"
+              :title="info.title"
+              :subtitle="info.original_title"
+              :language="info.original_language"
+              :vote="info.vote_average"
+              :plot="info.overview"
+              />
             </div>
           </div>
           <div v-else>
-                <h3 class="bg-my-black text-light p-4">
-                    Nessun risultato trovato per la tua ricerca
-                </h3>
-                </div>
-          <h1 class="py-4 text-light ms-5">Tv Series</h1>
-          <div class="d-flex justify-content-center overflow-x-auto">
-                <CardComponent
-                v-if="store.seriesList.length > 1"
-                v-for="(info, index) in store.seriesList"
-                :key="index"
-                :source="info.poster_path"
-                :title="info.name"
-                :subtitle="info.original_name"
-                :language="info.original_language"
-                :vote="info.vote_average"
-                :plot="info.overview"
-                />
-                <div v-else>
-                    <h3 class="bg-my-black text-light p-4">
-                        Nessun risultato trovato per la tua ricerca
-                    </h3>
-                </div>
+            <h3 class="bg-my-black text-light p-4">
+               Nessun risultato trovato per la tua ricerca
+            </h3>
+          </div>
+          <!--series-->
+          <div v-if="store.seriesList.length > 1" class="position-relative">
+            <h1 class="py-4 text-light ms-5">
+              Tv Series
+            </h1>
+            <div @click="scrollLft('seriesAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+              <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
+            </div>
+            <div @click="scrollRgt('seriesAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+              <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
+            </div>
+            <div class="d-flex justify-content-center overflow-x-auto text-light album-wrapper" ref="seriesAlbum">
+              <CardComponent
+              v-for="(info, index) in store.seriesList"
+              :key="index"
+              :source="info.poster_path"
+              :title="info.name"
+              :subtitle="info.original_name"
+              :language="info.original_language"
+              :vote="info.vote_average"
+              :plot="info.overview"
+              />
+            </div>
+          </div>
+          <div v-else>
+            <h3 class="bg-my-black text-light p-4">
+              Nessun risultato trovato per la tua ricerca
+            </h3>
           </div>
         </div>
       </div>
@@ -73,13 +84,13 @@ export default {
   methods: {
     scrollLft(el) {
       this.$refs[el].scrollBy({
-        left: 200,
+        left: 500,
         behavior: "smooth"
       });
     },
     scrollRgt(el) {
       this.$refs[el].scrollBy({
-        left: -200,
+        left: -500,
         behavior:"smooth"
       });
     }

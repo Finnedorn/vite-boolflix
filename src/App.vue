@@ -1,6 +1,11 @@
 <template>
-  <HeaderComponent @movie-searcher="getSearchedMovies"/>
-  <MainComponent/>
+  <div v-if="loading">
+
+  </div>
+  <div v-else>
+    <HeaderComponent @movie-searcher="getSearchedMovies"/>
+    <MainComponent/>
+  </div>
 </template>
 
 <script>
@@ -16,25 +21,39 @@
     },
     data() {
       return {
-        store
-      }
+        store,
+        loading: true
+      } 
     },
     methods: {
-      getMoviesandSeries() {
-        this.store.movieList = [];
-        this.store.seriesList =[];
+      getMovies() {
+        this.store.movieList= [];
         const movieUrl= store.apiUrl + this.store.endPoint.movie;
-        axios.get(movieUrl, {params: this.store.params}).then((resp) => {
-        this.store.movieList = resp.data.results;
-        console.log(this.store.movieList);
-        })
-
-        const seriesUrl= store.apiUrl + this.store.endPoint.series;
-        axios.get(seriesUrl, {params: this.store.params}).then((resp) => {
-        this.store.seriesList = resp.data.results;
-        console.log(this.store.seriesList);
-        })
+        return axios.get(movieUrl, {params: this.store.params});
       },
+
+      getSeries() {
+        this.store.seriesList= [];
+        const seriesUrl= store.apiUrl + this.store.endPoint.series;
+        return axios.get(seriesUrl, {params: this.store.params});
+      },
+
+      // getMoviesandSeries() {
+      //   this.store.movieList = [];
+      //   this.store.seriesList =[];
+      //   const movieUrl= store.apiUrl + this.store.endPoint.movie;
+      //   axios.get(movieUrl, {params: this.store.params}).then((resp) => {
+      //   this.store.movieList = resp.data.results;
+      //   console.log(this.store.movieList);
+      //   })
+
+      //   const seriesUrl= store.apiUrl + this.store.endPoint.series;
+      //   axios.get(seriesUrl, {params: this.store.params}).then((resp) => {
+      //   this.store.seriesList = resp.data.results;
+      //   console.log(this.store.seriesList);
+      //   })
+      // },
+
       getSearchedMovies(search) {
         console.log(search);
         if(search) {
@@ -43,11 +62,28 @@
         } else {
           this.store.params.query = 'a';
         }
+      },
+
+      loadingScreen() {
+        setTimeout(() => {
+          this.loading = false;
+        },5000);
       }
-      
     },
     created() {
-      this.getMoviesandSeries()
+
+      // this.getMoviesandSeries()
+
+      Promise.all([this.getMovies(), this.getSeries()]).then(function(resp) {
+        store.movieList = resp[0].data.results;
+        store.seriesList = resp[1].data.results;
+      }).catch((error)=> {
+        console.log(error)
+        this.store.error = true;
+      })
+    },
+    mounted() {
+      this.loadingScreen();
     }
   }
 </script>

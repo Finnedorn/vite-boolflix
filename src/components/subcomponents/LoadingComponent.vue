@@ -1,7 +1,5 @@
 <template>
-    <div>
-
-    </div>
+    <video src="../../../images/Netflix_New_Logo_Animation_2019.mp4" autoplay></video>
 </template>
 
 <script>

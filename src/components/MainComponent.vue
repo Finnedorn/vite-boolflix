@@ -15,7 +15,7 @@
             <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper" ref="movieAlbum">
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
               <CardComponent
               v-for="(info, index) in store.movieList"
               :key="index"
@@ -99,6 +99,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
 .arrow-wrapper {
   border-radius: 5px;
   opacity: 0.9;

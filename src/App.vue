@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div v-if="loading">
+    <LoadingComponent/>
+  </div>
+  <div v-else>
     <HeaderComponent @movie-searcher="getSearchedMovies"/>
     <MainComponent/>
   </div>
@@ -10,11 +13,13 @@
   import axios from 'axios';
   import HeaderComponent from './components/HeaderComponent.vue';
   import MainComponent from './components/MainComponent.vue';
+  import LoadingComponent from './components/subcomponents/LoadingComponent.vue';
   export default {
     name: 'App',
     components: {
       HeaderComponent,
-      MainComponent
+      MainComponent,
+      LoadingComponent
     },
     data() {
       return {
@@ -52,7 +57,6 @@
       // },
 
       loadAll() {
-
         Promise.all([this.getMovies(), this.getSeries()]).then(function(resp) {
           store.movieList = resp[0].data.results;
           store.seriesList = resp[1].data.results;

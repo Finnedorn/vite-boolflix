@@ -1,10 +1,15 @@
 <template>
-  <div v-if="loading">
-    <LoadingComponent/>
+  <div v-if="start">
+    <StartScreenComponent @avatar-button="avatarChosen"/>
   </div>
   <div v-else>
-    <HeaderComponent @movie-searcher="getSearchedMovies"/>
-    <MainComponent/>
+    <div v-if="loading">
+      <LoadingComponent/>
+    </div>
+    <div v-else>
+      <HeaderComponent @movie-searcher="getSearchedMovies"/>
+      <MainComponent/>
+    </div>
   </div>
 </template>
 
@@ -14,17 +19,20 @@
   import HeaderComponent from './components/HeaderComponent.vue';
   import MainComponent from './components/MainComponent.vue';
   import LoadingComponent from './components/subcomponents/LoadingComponent.vue';
+  import StartScreenComponent from './components/subcomponents/StartScreenComponent.vue';
   export default {
     name: 'App',
     components: {
       HeaderComponent,
       MainComponent,
-      LoadingComponent
+      LoadingComponent,
+      StartScreenComponent
     },
     data() {
       return {
         store,
-        loading: true
+        loading: true,
+        start:true
       } 
     },
     methods: {
@@ -76,18 +84,26 @@
         }
       },
 
-      loadingScreen() {
+      // loadingScreen() {
+      //   setTimeout(() => {
+      //     this.loading = false;
+      //   },5000);
+      // },
+
+      avatarChosen() {
+        this.start = false;
         setTimeout(() => {
           this.loading = false;
         },5000);
       }
+
     },
     created() {
       // this.getMoviesandSeries()
       this.loadAll();
     },
     mounted() {
-      this.loadingScreen();
+      // this.loadingScreen();
     }
   }
 </script>

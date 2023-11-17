@@ -100,9 +100,6 @@ export default {
 
 <style lang="scss" scoped>
 
-.no-bar::-webkit-scrollbar {
-  display: none;
-}
 .arrow-wrapper {
   border-radius: 5px;
   opacity: 0.9;

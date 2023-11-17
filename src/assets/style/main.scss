@@ -37,3 +37,6 @@ img {
     background-color: $netflix-light-brown;
 }
 
+.no-bar::-webkit-scrollbar {
+    display: none;
+}

@@ -4,25 +4,34 @@
     <div>
       <div class="container-fluid p-2 bg-my-black main-wrapper">
         <div class="container-fluid g-0">
-          <h1 class="pt-4 text-light ms-5">Movies</h1>
-          <div class="d-flex justify-content-center py-4 overflow-x-auto text-light" ref="album">
-                <CardComponent
-                v-if="store.movieList.length > 1"
-                v-for="(info, index) in store.movieList"
-                :key="index"
-                :source="info.poster_path"
-                :title="info.title"
-                :subtitle="info.original_title"
-                :language="info.original_language"
-                :vote="info.vote_average"
-                :plot="info.overview"
-                />
-                <div v-else>
+          <div v-if="store.movieList.length > 1" class="position-relative">
+            <h1 class="pt-4 text-light ms-5">
+              Movies
+            </h1>
+            <div @click="scrollLft('album')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+              <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
+            </div>
+            <div @click="scrollRgt('album')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+              <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
+            </div>
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper" ref="album">
+                    <CardComponent
+                    v-for="(info, index) in store.movieList"
+                    :key="index"
+                    :source="info.poster_path"
+                    :title="info.title"
+                    :subtitle="info.original_title"
+                    :language="info.original_language"
+                    :vote="info.vote_average"
+                    :plot="info.overview"
+                    />
+            </div>
+          </div>
+          <div v-else>
                 <h3 class="bg-my-black text-light p-4">
                     Nessun risultato trovato per la tua ricerca
                 </h3>
                 </div>
-          </div>
           <h1 class="py-4 text-light ms-5">Tv Series</h1>
           <div class="d-flex justify-content-center overflow-x-auto">
                 <CardComponent
@@ -42,7 +51,6 @@
                     </h3>
                 </div>
           </div>
-          <i class="fa-solid fa-chevron-right text-light fs-1" @click="scrollLft"></i>
         </div>
       </div>
     </div>
@@ -60,21 +68,48 @@ export default {
   data() {
     return {
       store,
-      distance: 200,
     };
   },
   methods: {
-        scrollLft() {
-            this.$refs.album.scrollBy({
-            left: 200,
-            behavior: "smooth",
-            });
-        },
+    scrollLft(el) {
+      this.$refs[el].scrollBy({
+        left: 200,
+        behavior: "smooth"
+      });
     },
+    scrollRgt(el) {
+      this.$refs[el].scrollBy({
+        left: -200,
+        behavior:"smooth"
+      });
+    }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.arrow-wrapper {
+  border-radius: 5px;
+  opacity: 0.9;
+  width: 80px;
+  background-color: rgba(4, 4, 4, 0.763);
+  padding: 120px 0px;
+}
+
+.arrow-right-pos {
+  top: 125px;
+  right:10px;
+  z-index:1100;
+}
+
+.arrow-left-pos {
+  top: 125px;
+  left:10px;
+  z-index:1100;
+}
+.arrow-scroll {
+  font-size: 5rem;
+}
 .main-wrapper {
   z-index: 1000;
 }

@@ -93,7 +93,7 @@ div>img {
 
 .card-wrapper:hover .desc-wrapper {
   opacity: 1;
-  transition: all 0.5;
+  transition: all 1s;
 }
 
 .black-overlay {
@@ -110,7 +110,7 @@ div>img {
 
 .card-wrapper:hover .black-overlay {
   opacity: 0.7;
-  transition: all 0.5;
+  transition: all 0.8s;
 }
 
 .plot-wrapper {

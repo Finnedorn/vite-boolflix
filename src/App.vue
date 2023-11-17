@@ -1,8 +1,5 @@
 <template>
-  <div v-if="loading">
-
-  </div>
-  <div v-else>
+  <div>
     <HeaderComponent @movie-searcher="getSearchedMovies"/>
     <MainComponent/>
   </div>
@@ -58,7 +55,8 @@
         console.log(search);
         if(search) {
           this.store.params.query = search;
-          this.getMoviesandSeries();
+          this.getMovies();
+          this.getSeries();
         } else {
           this.store.params.query = 'a';
         }

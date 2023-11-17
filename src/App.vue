@@ -51,12 +51,22 @@
       //   })
       // },
 
+      loadAll() {
+
+        Promise.all([this.getMovies(), this.getSeries()]).then(function(resp) {
+          store.movieList = resp[0].data.results;
+          store.seriesList = resp[1].data.results;
+        }).catch((error)=> {
+          console.log(error)
+          this.store.error = true;
+        })
+      },
+
       getSearchedMovies(search) {
         console.log(search);
         if(search) {
           this.store.params.query = search;
-          this.getMovies();
-          this.getSeries();
+          this.loadAll();
         } else {
           this.store.params.query = 'a';
         }
@@ -69,16 +79,8 @@
       }
     },
     created() {
-
       // this.getMoviesandSeries()
-
-      Promise.all([this.getMovies(), this.getSeries()]).then(function(resp) {
-        store.movieList = resp[0].data.results;
-        store.seriesList = resp[1].data.results;
-      }).catch((error)=> {
-        console.log(error)
-        this.store.error = true;
-      })
+      this.loadAll();
     },
     mounted() {
       this.loadingScreen();

@@ -7,17 +7,17 @@
                         <div class="logo">
                             <img src="../assets/images/Boolflix-16-11-2023.png" alt="boolflix-logo-png">
                         </div>
-                        <ul class=" list-unstyled d-flex pt-2">
+                        <ul class="pt-2 d-none d-lg-flex">
                             <li v-for="(el,index) in navbarArr" :key="index"><a href="#" class=" text-decoration-none text-light ms-4 ">{{el}}</a></li>
                         </ul>
                     </div>
                     <div class="input-group mb-3 w-25 pt-2">
                         <input type="text" class="form-control" placeholder="Film, serietv..." v-model="filterSearch">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="$emit('movieSearcher', filterSearch)">Cerca</button>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="$emit('movieSearcher', filterSearch)">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="position-absolute main-serie-wrapper">
+            <div class="position-absolute main-serie-wrapper ">
                 <div class="d-flex text-light align-items-center ps-5">
                     <div class="net-logo-wrapper">
                         <img src="../assets/images/Netflix-N-Symbol-logo-red-transparent-RGB-png-e1684581799529.png" alt="netflix.logo">
@@ -58,9 +58,9 @@
                 filterSearch: '',
                 navbarArr: [
                     'Home',
-                    'Serie Tv',
-                    'Film', 
-                    'Nuovi e popolari'
+                    'Tv Series',
+                    'Movies', 
+                    'Newest and Popular'
                 ]
             }
         }
@@ -73,12 +73,10 @@
     width: 100%;
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-
 }
 
 video {
     width: 100%;
-    height: 100%;
 }
 
 .header-wrapper {

@@ -1,5 +1,5 @@
 <template>
-    <div class="start-screen-wrapper">
+    <div class="start-screen-wrapper bg-my-black">
         <h1 class="text-light text-center">
             Who's watching Net..ehm..Boolflix?
         </h1>
@@ -44,7 +44,6 @@ h1 {
 }
 .start-screen-wrapper {
     height: 100vh;
-    background-color: black;
     padding-top: 300px
 };
 

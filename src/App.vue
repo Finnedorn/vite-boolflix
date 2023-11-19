@@ -1,14 +1,26 @@
 <template>
-  <div v-if="start">
-    <StartScreenComponent @avatar-button="avatarChosen"/>
+  <div v-if="store.error === true">
+    <ErrorScreenComponent/>
   </div>
   <div v-else>
-    <div v-if="loading">
-      <LoadingComponent/>
+    <div v-if="start">
+      <StartScreenComponent @avatar-button="avatarChosen"/>
     </div>
     <div v-else>
-      <HeaderComponent @movie-searcher="getSearchedMovies"/>
-      <MainComponent/>
+      <div v-if="loading">
+        <LoadingComponent/>
+      </div>
+      <div v-else>
+        <div v-if="store.params.query === 'a'">
+          <HeaderComponent @movie-searcher="getSearchedMovies"/>
+          <MainComponent/>
+        </div>
+        <div v-else>
+          <SearchHeaderComponent/>
+          <SearchMainComponent/>
+        </div>
+        <FooterComponent/>
+      </div>
     </div>
   </div>
 </template>
@@ -20,13 +32,21 @@
   import MainComponent from './components/MainComponent.vue';
   import LoadingComponent from './components/subcomponents/LoadingComponent.vue';
   import StartScreenComponent from './components/subcomponents/StartScreenComponent.vue';
+  import FooterComponent from './components/FooterComponent.vue';
+  import SearchHeaderComponent from './components/alter-components/SearchHeaderComponent.vue';
+  import SearchMainComponent from './components/alter-components/SearchMainComponent.vue';
+  import ErrorScreenComponent from './components/alter-components/ErrorScreenComponent.vue';
   export default {
     name: 'App',
     components: {
       HeaderComponent,
       MainComponent,
+      FooterComponent,
       LoadingComponent,
-      StartScreenComponent
+      StartScreenComponent,
+      SearchHeaderComponent,
+      SearchMainComponent,
+      ErrorScreenComponent
     },
     data() {
       return {
@@ -41,39 +61,32 @@
         const movieUrl= store.apiUrl + this.store.endPoint.movie;
         return axios.get(movieUrl, {params: this.store.params});
       },
-
       getSeries() {
         this.store.seriesList= [];
         const seriesUrl= store.apiUrl + this.store.endPoint.series;
         return axios.get(seriesUrl, {params: this.store.params});
       },
-
-      // getMoviesandSeries() {
-      //   this.store.movieList = [];
-      //   this.store.seriesList =[];
-      //   const movieUrl= store.apiUrl + this.store.endPoint.movie;
-      //   axios.get(movieUrl, {params: this.store.params}).then((resp) => {
-      //   this.store.movieList = resp.data.results;
-      //   console.log(this.store.movieList);
-      //   })
-
-      //   const seriesUrl= store.apiUrl + this.store.endPoint.series;
-      //   axios.get(seriesUrl, {params: this.store.params}).then((resp) => {
-      //   this.store.seriesList = resp.data.results;
-      //   console.log(this.store.seriesList);
-      //   })
-      // },
-
+      getNowPlaying() {
+        this.store.nowPlayingList= [];
+        const nowPlayingUrl = store.apiUrl + this.store.nowPlayingEndPoint;
+        return axios.get(nowPlayingUrl, {params: this.store.nowPlayingParams});
+      },
+      getTopRated() {
+        this.store.topRatedList= [];
+        const topRatedUrl = store.apiUrl + this.store.topRatedEndPoint;
+        return axios.get(topRatedUrl, {params: this.store.topRatedParams}); 
+      },
       loadAll() {
-        Promise.all([this.getMovies(), this.getSeries()]).then(function(resp) {
+        Promise.all([this.getMovies(), this.getSeries(), this.getNowPlaying(), this.getTopRated()]).then(function(resp) {
           store.movieList = resp[0].data.results;
           store.seriesList = resp[1].data.results;
+          store.nowPlayingList = resp[2].data.results;
+          store.topRatedList = resp[3].data.results;
         }).catch((error)=> {
           console.log(error)
           this.store.error = true;
         })
       },
-
       getSearchedMovies(search) {
         console.log(search);
         if(search) {
@@ -83,27 +96,15 @@
           this.store.params.query = 'a';
         }
       },
-
-      // loadingScreen() {
-      //   setTimeout(() => {
-      //     this.loading = false;
-      //   },5000);
-      // },
-
       avatarChosen() {
         this.start = false;
         setTimeout(() => {
           this.loading = false;
         },5000);
       }
-
     },
     created() {
-      // this.getMoviesandSeries()
       this.loadAll();
-    },
-    mounted() {
-      // this.loadingScreen();
     }
   }
 </script>

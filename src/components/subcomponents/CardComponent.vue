@@ -1,7 +1,7 @@
 <template>
-  <div class="col-2 card-wrapper position-relative overflow-hidden">
+  <div class="col-2 card-wrapper position-relative overflow-hidden mx-1 rounded-1">
     <div>
-      <img :src="'http://image.tmdb.org/t/p/w342' + source" :alt="title" />
+      <img :src="(source)? 'http://image.tmdb.org/t/p/w342' + source : '../../../images/movie_missing.png'" :alt="title" />
     </div>
     <div
       class="text-center py-3 text-light desc-wrapper position position-absolute"
@@ -51,9 +51,9 @@ export default {
   },
   computed: {
     getFlag() {
-      let flag = `/public/images/${this.language}.svg`;
+      let flag = `/images/${this.language}.svg`;
       if (!this.flags.includes(this.language)) {
-        flag = "/public/images/imagemissing_92832.png";
+        flag = "/images/imagemissing_92832.png";
       }
       return flag;
     },

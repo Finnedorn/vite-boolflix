@@ -25,6 +25,10 @@ img {
     color: $netflix-red;
 }
 
+.text-my-grey {
+    color: $netflix-grey;
+}
+
 .bg-my-red {
     background-color: $netflix-red;
 }
@@ -39,4 +43,12 @@ img {
 
 .no-bar::-webkit-scrollbar {
     display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul>li {
+    list-style: none;
 }

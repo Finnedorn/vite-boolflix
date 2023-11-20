@@ -79,13 +79,13 @@ export default {
     methods: {
         scrollLft(el) {
             this.$refs[el].scrollBy({
-                left: 800,
+                left: 900,
                 behavior: "smooth"
             });
         },
         scrollRgt(el) {
             this.$refs[el].scrollBy({
-                left: -800,
+                left: -900,
                 behavior: "smooth"
             });
         }
@@ -96,7 +96,7 @@ export default {
 <style lang="scss" scoped>
 
 .main-wrapper {
-    padding: 50px 0px !important;
+    height: 100vh;
 }
 .arrow-wrapper {
     border-radius: 5px;

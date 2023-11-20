@@ -37,7 +37,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="text-my-grey ms-4 ">
+            <div class="text-my-grey ms-4 pb-2">
                 ©1997-2023  Net..ehm..Boolflix, Inc.
             </div>
         </div>

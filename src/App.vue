@@ -16,7 +16,7 @@
           <MainComponent/>
         </div>
         <div v-else>
-          <SearchHeaderComponent/>
+          <SearchHeaderComponent @movie-searcher="getSearchedMovies"/>
           <SearchMainComponent/>
         </div>
         <FooterComponent/>
@@ -67,12 +67,10 @@
         return axios.get(seriesUrl, {params: this.store.params});
       },
       getNowPlaying() {
-        this.store.nowPlayingList= [];
         const nowPlayingUrl = store.apiUrl + this.store.nowPlayingEndPoint;
         return axios.get(nowPlayingUrl, {params: this.store.nowPlayingParams});
       },
       getTopRated() {
-        this.store.topRatedList= [];
         const topRatedUrl = store.apiUrl + this.store.topRatedEndPoint;
         return axios.get(topRatedUrl, {params: this.store.topRatedParams}); 
       },

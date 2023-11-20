@@ -48,18 +48,18 @@
               />
             </div>
           </div>
-          <!--movies-->
+          <!--top rated-->
           <div class="position-relative">
             <h1 class="pt-4 text-light ms-5">
               Top Rated this week
             </h1>
-            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+            <div @click="scrollLft('topAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
               <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
             </div>
-            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+            <div @click="scrollRgt('topAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="topAlbum">
               <CardComponent
               v-for="(info, index) in store.topRatedList"
               :key="index"
@@ -121,13 +121,13 @@ export default {
   methods: {
     scrollLft(el) {
       this.$refs[el].scrollBy({
-        left: 800,
+        left: 900,
         behavior: "smooth"
       });
     },
     scrollRgt(el) {
       this.$refs[el].scrollBy({
-        left: -800,
+        left: -900,
         behavior:"smooth"
       });
     }

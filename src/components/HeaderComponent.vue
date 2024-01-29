@@ -20,7 +20,7 @@
             <div class="position-absolute main-serie-wrapper ">
                 <div class="d-flex text-light align-items-center ps-5">
                     <div class="net-logo-wrapper">
-                        <img src="../../docs/images/Avatar_ The Last Airbender _ Official Teaser _ Netflix.mp4" alt="netflix.logo">
+                        <img src="../assets/images/Netflix-N-Symbol-logo-red-transparent-RGB-png-e1684581799529.png" alt="netflix.logo">
                     </div>
                     <h4 class="ms-2">
                         SERIE

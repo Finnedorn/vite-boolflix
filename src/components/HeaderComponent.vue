@@ -2,6 +2,7 @@
     <div class=" container-fluid bg-my-black g-0">
         <div class="g-0 position-relative header-wrapper">
             <div class=" position-absolute logo-wrapper">
+                <div class="container-fluid nav-shadow"></div>
                 <div class="px-5 d-flex justify-content-between align-items-center py-3">
                     <div class="d-flex">
                         <div class="logo">
@@ -41,8 +42,15 @@
                     Infos
                 </button>
             </div>
+            <div>
+                <div class="mute-btn-wrapper position-absolute">
+                    <button id="mute-btn" @click=volumeOn()>
+                        <i id = "mute-icon" class="fa-solid fa-volume-xmark"></i>
+                    </button>
+                </div>
+            </div>
             <div class="video-wrapper position-absolute ">
-                <video src="../../public/images/Avatar_ The Last Airbender _ Official Teaser _ Netflix.mp4" autoplay muted loop></video>
+                <video id="myVideo" src="../../public/images/Avatar_ The Last Airbender _ Official Teaser _ Netflix.mp4" autoplay muted loop></video>
             </div>
         </div>
     </div>
@@ -63,16 +71,53 @@
                     'Newest and Popular'
                 ]
             }
+        },
+        methods: {
+            volumeOn(){
+                let volBtn = document.getElementById('mute-btn');
+                
+                volBtn.addEventListener('click', ()=>{
+                    let video = document.getElementById('myVideo');
+                    let icon = document.getElementById('mute-icon');
+                    video.muted = !video.muted
+                    if(video.muted){
+                        icon.classList.remove('fa-volume-xmark');
+                        icon.classList.add('fa-volume-high');
+                        video.setAttribute('muted', '');
+                    } else {
+                        icon.classList.remove('fa-volume-high');
+                        icon.classList.add('fa-volume-xmark');
+                        video.removeAttribute('muted', '');
+                    }
+                })
+            }
         }
     }
 </script>
   
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
+
+.nav-shadow {
+    height: 100px;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background-color: rgba(0, 0, 0, 0.781);
+    position: absolute;
+    z-index: -1;
+}
+
+.mute-btn-wrapper {
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
 .video-wrapper {
     position: relative;
-    top: -20px;
-    height: 800px;
+    top: -210px;
+    height: 1000px;
     width: 100%;
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));

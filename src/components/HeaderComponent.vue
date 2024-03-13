@@ -42,11 +42,14 @@
                     Infos
                 </button>
             </div>
-            <div>
-                <div class="mute-btn-wrapper position-absolute">
-                    <button id="mute-btn" @click=volumeOn()>
-                        <i id = "mute-icon" class="fa-solid fa-volume-xmark"></i>
+            <div class="position-absolute settings-wrapper d-flex align-items-center">
+                <div class="mute-btn-wrapper d-flex justify-content-center me-3">
+                    <button id="mute-btn" class="btn p-2 rounded-5" @click=volumeOn()>
+                        <i id="mute-icon" class="fa-solid fa-volume-xmark"></i>
                     </button>
+                </div>
+                <div class="pegi-wrapper p-2">
+                    16+
                 </div>
             </div>
             <div class="video-wrapper position-absolute ">
@@ -98,6 +101,20 @@
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 
+
+#mute-icon {
+    padding-top: 2px;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.pegi-wrapper {
+    color: white;
+    font-size: 1.5rem;
+    border-left: 3px solid white;
+    background-color: rgba(79, 79, 79, 0.321);
+    width: 150px;
+}
 .nav-shadow {
     height: 100px;
     width: 100%;
@@ -108,9 +125,18 @@
     z-index: -1;
 }
 
+.settings-wrapper {
+    position: absolute;
+    bottom: 50px;
+    right: 0px;
+    z-index: 1000;
+}
+
 .mute-btn-wrapper {
-    bottom: 20px;
-    right: 20px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.485);
+    border-radius: 50%;
     z-index: 1000;
 }
 

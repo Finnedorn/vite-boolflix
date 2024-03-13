@@ -70,6 +70,9 @@
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 .video-wrapper {
+    position: relative;
+    top: -20px;
+    height: 800px;
     width: 100%;
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
@@ -114,6 +117,20 @@ z-index: 1200;
     width: 400px;
 }
 
+.btn-light {
+    background-color: rgba(255, 255, 255, 0.761);
+    border: none;
+    &:hover {
+        background-color: rgb(255, 255, 255);
+        transition: all 0.3s;
+    }
+}
+
 .info-btn {
-background-color: rgba(128, 128, 128, 0.466)}
+background-color: rgba(128, 128, 128, 0.466);
+    &:hover {
+        background-color: rgba(199, 199, 199, 0.466);
+        transition: all 0.3s;
+    }
+}
 </style>

@@ -35,6 +35,32 @@
             <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
+            
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
+              
+              <CardComponent
+              v-for="(info, index) in store.movieList"
+              :key="index"
+              :source="info.poster_path"
+              :title="info.title"
+              :subtitle="info.original_title"
+              :language="info.original_language"
+              :vote="info.vote_average"
+              :plot="info.overview"
+              />
+            </div>
+          </div>
+          <!--movies-->
+          <div class="position-relative">
+            <h1 class="pt-4 text-light ms-5">
+              Movies
+            </h1>
+            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+              <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
+            </div>
+            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+              <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
+            </div>
             <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
               <CardComponent
               v-for="(info, index) in store.movieList"
@@ -104,6 +130,7 @@
 </template>
 
 <script>
+import TopCardComponent from "./subcomponents/TopCardComponent.vue";
 import CardComponent from "./subcomponents/CardComponent.vue";
 import TicketComponent from "./subcomponents/TicketComponent.vue";
 import { store } from "../assets/data/store.js";
@@ -112,6 +139,7 @@ export default {
   components: {
     CardComponent,
     TicketComponent,
+    TopCardComponent,
   },
   data() {
     return {

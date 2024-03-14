@@ -12,11 +12,11 @@
       </div>
       <div v-else>
         <div v-if="store.params.query === 'a'">
-          <HeaderComponent @movie-searcher="getSearchedMovies"/>
+          <HeaderComponent @movie-searcher="getSearchedMovies" @nav-click="loadAllMovies" />
           <MainComponent/>
         </div>
         <div v-else>
-          <SearchHeaderComponent @movie-searcher="getSearchedMovies"/>
+          <SearchHeaderComponent @movie-searcher="getSearchedMovies" @nav-click="loadAllMovies"/>
           <SearchMainComponent/>
         </div>
         <FooterComponent/>
@@ -93,6 +93,10 @@
         } else {
           this.store.params.query = 'a';
         }
+      },
+      loadAllMovies() {
+        this.store.params.query = 'a';
+        console.log('ciao');
       },
       avatarChosen() {
         this.start = false;

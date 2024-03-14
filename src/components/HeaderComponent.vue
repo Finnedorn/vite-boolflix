@@ -9,12 +9,12 @@
                             <img src="../assets/images/Boolflix-16-11-2023.png" alt="boolflix-logo-png">
                         </div>
                         <ul class="pt-2 d-none d-lg-flex">
-                            <li v-for="(el,index) in navbarArr" :key="index"><a id="nav-names" href="#" class=" nav-voice text-decoration-none text-light ms-4 ">{{el}}</a></li>
+                            <li v-for="(el,index) in navbarArr" :key="index"><a id="nav-names" href="#" class=" nav-voice text-decoration-none text-light ms-4" @click="$emit('navClick', el)" >{{el}}</a></li>
                         </ul>
                     </div>
                     <div class="input-group mb-3 w-25 pt-2">
                         <input type="text" class="form-control" placeholder="Film, serietv..." v-model="filterSearch">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="$emit('movieSearcher', filterSearch)">Search</button>
+                        <button class="btn btn-outline-secondary btn-search" type="button" id="button-addon2" @click="$emit('movieSearcher', filterSearch)">Search</button>
                     </div>
                 </div>
             </div>
@@ -101,6 +101,12 @@
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 
+input {
+    &:focus {
+        box-shadow: $netflix-red !important;
+    }
+}
+
 .nav-voice {
     &:hover {
         color: rgb(144, 144, 144) !important;
@@ -108,6 +114,11 @@
     }
 }
 
+.btn-search {
+    &:hover {
+        background-color: #ff4141 !important;
+    }
+}
 
 #mute-icon {
     padding-top: 2px;

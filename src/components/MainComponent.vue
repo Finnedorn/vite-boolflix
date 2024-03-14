@@ -24,14 +24,14 @@
             </div>
           </div>
           <!--top rated-->
-          <div class="position-relative">
+          <div class="position-relative d-none d-md-block ">
             <h1 class="pt-4 text-light ms-5">
               Top Rated Movies This Week
             </h1>
-            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos-ten text-center">
               <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
             </div>
-            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos-ten text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
             <div id="topTen-cards"
@@ -42,7 +42,7 @@
                   :subtitle="info.original_title" :language="info.original_language" :vote="info.vote_average"
                   :plot="info.overview" />
                 <div class="number-wrapper">
-                  <div class="ms-4">
+                  <div class="ms-4 ms-sm-0 ">
                     <img :src="store.topTen[index]" alt="title">
                   </div>
                 </div>
@@ -172,6 +172,18 @@ export default {
   z-index: 1100;
 }
 
+.arrow-right-pos-ten {
+  top: 125px;
+  right: 10px;
+  z-index: 1100;
+}
+
+.arrow-left-pos-ten {
+  top: 125px;
+  left: 10px;
+  z-index: 1100;
+}
+
 .arrow-wrapper-watch {
   border-radius: 5px;
   opacity: 0.9;
@@ -231,6 +243,86 @@ export default {
   }
 
 
+
+}
+
+@media screen and (max-width: 480px) {
+  .main-wrapper {
+    top: -2px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    position: relative;
+    left: -30px;
+  }
+
+  .arrow-wrapper-watch {
+    border-radius: 5px;
+    opacity: 0.9;
+    width: 50px;
+    background-color: rgba(4, 4, 4, 0.763);
+    padding: 30px 0px;
+  }
+
+  .arrow-right-watch-pos {
+    top: 78px;
+    right: 10px;
+    z-index: 1100;
+  }
+
+  .arrow-left-watch-pos {
+    top: 78px;
+    left: 10px;
+    z-index: 1100;
+  }
+
+  .arrow-scroll {
+    font-size: 3.5rem;
+  }
+
+  .card-component-wrapper {
+    width: 130px;
+    height: 180px;
+    margin-left: 130px;
+    margin-top: 120px;
+    position: relative;
+    top: -60px;
+    right: -20px;
+    z-index: 5;
+  }
+
+  .arrow-wrapper {
+    border-radius: 5px;
+    opacity: 0.9;
+    width: 50px;
+    background-color: rgba(4, 4, 4, 0.763);
+    padding: 30px 0px;
+  }
+
+  .arrow-right-pos-ten {
+    top: 170px;
+    right: 10px;
+    z-index: 1100;
+  }
+
+  .arrow-left-pos-ten {
+    top: 170px;
+    left: 10px;
+    z-index: 1100;
+  }
+
+  .arrow-right-pos {
+    top: 115px;
+    right: 10px;
+    z-index: 1100;
+  }
+
+  .arrow-left-pos {
+    top: 115px;
+    left: 10px;
+    z-index: 1100;
+  }
 
 }
 </style>

@@ -89,4 +89,11 @@ div>img {
     
 }
 
+@media screen and (max-width: 480px) {
+    .card-wrapper {
+        width: 200px;
+    }
+    
+}
+
 </style>

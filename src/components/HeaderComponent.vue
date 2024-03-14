@@ -31,14 +31,16 @@
                         <img src="../assets/images/AAAABU1-JRbb0a_bBhPJeiAAGzO4WD7ZOmd0OvHlIhU8ybxBzHxmwuC2qQF4mVAGzQi0ulXc-Q0k_P4KykHJ73o_pcGdAEydHX-Y9VErmh-rvRLj.png"
                             alt="avatar.logo">
                     </div>
-                    <button type="button" class="btn btn-light fs-4 px-4 me-3 button-lg ms-2 ">
-                        <i class="fa-solid fa-play me-2 "></i>
-                        Play
-                    </button>
-                    <button type="button" class="btn fs-4 px-4 info-btn text-light ">
-                        <i class="fa-solid fa-circle-info me-2 fs-3"></i>
-                        Infos
-                    </button>
+                    <div class="ms-1">
+                        <button type="button" class="btn btn-light fs-4 px-4 me-3 button-lg ms-2 ">
+                            <i class="fa-solid fa-play me-2 "></i>
+                            Play
+                        </button>
+                        <button type="button" class="btn fs-4 px-4 info-btn text-light ">
+                            <i class="fa-solid fa-circle-info me-2 fs-3"></i>
+                            Infos
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="position-absolute main-serie-wrapper d-none d-md-block">
@@ -188,7 +190,7 @@ input {
 
 .video-wrapper {
     position: relative;
-    top: -210px;
+    top: -230px;
     height: 1000px;
     width: 100%;
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
@@ -294,7 +296,10 @@ video {
     }
 
     video {
-        width: 2800px;
+        width: 1800px;
+        position: relative;
+        left: -500px;
+        top: -20px;
     }
 
 }
@@ -305,6 +310,7 @@ video {
     }
 
     .serie-logo-wrapper {
+        margin: auto;
         margin-top: 30px;
         width: 300px;
         margin-bottom: 30px;

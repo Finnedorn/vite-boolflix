@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid bg-my-black py-4">
+    <div class="container-fluid bg-my-black py-4 d-none d-md-block">
         <div class="container pt-3">
             <div class="text-light fs-2 ms-4">
                 <i class="fa-brands fa-facebook-f mx-2 "></i>

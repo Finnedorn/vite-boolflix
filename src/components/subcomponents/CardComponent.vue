@@ -1,11 +1,10 @@
 <template>
   <div class="col-2 card-wrapper position-relative overflow-hidden rounded-1">
     <div>
-      <img :src="(source)? 'http://image.tmdb.org/t/p/w342' + source : '../../../images/movie_missing.png'" :alt="title" />
+      <img :src="(source) ? 'http://image.tmdb.org/t/p/w342' + source : '../../../images/movie_missing.png'"
+        :alt="title" />
     </div>
-    <div
-      class="text-center py-3 text-light desc-wrapper position position-absolute"
-    >
+    <div class="text-center py-3 text-light desc-wrapper position position-absolute">
       <div>
         <h4 class="text-my-red">
           {{ title }}
@@ -17,12 +16,7 @@
           <img :src="getFlag" :alt="language + 'flag'" class="flag" />
         </p>
         <p>
-          <i
-            v-for="n in 5"
-            :key="n"
-            class="fa-star"
-            :class="(n <= getStars) ? 'fa-solid' : 'fa-regular'"
-          ></i>
+          <i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getStars) ? 'fa-solid' : 'fa-regular'"></i>
         </p>
         <p class="plot-wrapper">
           {{ plot }}
@@ -53,7 +47,7 @@ export default {
     getFlag() {
       let flag = `/images/${this.language}.svg`;
       if (!this.flags.includes(this.language)) {
-        flag = "/images/imagemissing_92832.png";
+        flag = "/images/us.svg";
       }
       return flag;
     },
@@ -72,6 +66,7 @@ img.flag {
 div>img {
   width: 100%;
 }
+
 .card-wrapper {
   width: 250px;
   height: 375px;
@@ -117,5 +112,21 @@ div>img {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 480px) {
+  .card-wrapper {
+    width: 130px;
+    height: 180px;
+  }
+  .card-wrapper:hover .desc-wrapper {
+    opacity: 0;
+    transition: none;
+  }
+
+  .card-wrapper:hover .black-overlay {
+    opacity: 0;
+    transition: none;
+  }
 }
 </style>

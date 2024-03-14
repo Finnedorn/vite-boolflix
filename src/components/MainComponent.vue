@@ -9,78 +9,50 @@
             <h1 class="pt-4 text-light ms-5">
               Continue Watching
             </h1>
-            <div @click="scrollLft('watchingAlbum')" class=" arrow-wrapper-watch position-absolute arrow-right-watch-pos text-center">
+            <div @click="scrollLft('watchingAlbum')"
+              class=" arrow-wrapper-watch position-absolute arrow-right-watch-pos text-center">
               <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
             </div>
-            <div @click="scrollRgt('watchingAlbum')" class=" arrow-wrapper-watch position-absolute arrow-left-watch-pos text-center">
+            <div @click="scrollRgt('watchingAlbum')"
+              class=" arrow-wrapper-watch position-absolute arrow-left-watch-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="watchingAlbum">
-              <TicketComponent
-              v-for="(info, index) in store.nowPlayingList"
-              :key="index"
-              :source="info.backdrop_path"
-              :title="info.title"
-              />
-            </div>
-          </div>
-          <!--movies-->
-          <div class="position-relative">
-            <h1 class="pt-4 text-light ms-5">
-              Movies
-            </h1>
-            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
-              <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
-            </div>
-            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
-              <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
-            </div>
-            
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
-              <TopCardComponent
-              
-              />
-
-              <CardComponent
-              v-for="(info, index) in store.movieList"
-              :key="index"
-              :source="info.poster_path"
-              :title="info.title"
-              :subtitle="info.original_title"
-              :language="info.original_language"
-              :vote="info.vote_average"
-              :plot="info.overview"
-              />
-            </div>
-          </div>
-          <!--movies-->
-          <div class="position-relative">
-            <h1 class="pt-4 text-light ms-5">
-              Movies
-            </h1>
-            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
-              <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
-            </div>
-            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
-              <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
-            </div>
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
-              <CardComponent
-              v-for="(info, index) in store.movieList"
-              :key="index"
-              :source="info.poster_path"
-              :title="info.title"
-              :subtitle="info.original_title"
-              :language="info.original_language"
-              :vote="info.vote_average"
-              :plot="info.overview"
-              />
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar"
+              ref="watchingAlbum">
+              <TicketComponent v-for="(info, index) in store.nowPlayingList" :key="index" :source="info.backdrop_path"
+                :title="info.title" />
             </div>
           </div>
           <!--top rated-->
           <div class="position-relative">
             <h1 class="pt-4 text-light ms-5">
-              Top Rated this week
+              Top Rated Movies This Week
+            </h1>
+            <div @click="scrollLft('movieAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
+              <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
+            </div>
+            <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
+              <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
+            </div>
+            <div id="topTen-cards" class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar"
+              ref="movieAlbum">
+              <div v-for="(info, index) in store.movieList.slice(0, 7)" :key="index" class="position-relative">
+                <CardComponent class="card-component-wrapper"
+                  :source="info.poster_path" :title="info.title" :subtitle="info.original_title"
+                  :language="info.original_language" :vote="info.vote_average" :plot="info.overview" 
+                />
+                <div class="number-wrapper">
+                  <div class="ms-4">
+                    <img :src="store.topTen[index]" alt="title">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--movies-->
+          <div class="position-relative">
+            <h1 class="pt-4 text-light ms-5">
+              Movies
             </h1>
             <div @click="scrollLft('topAlbum')" class=" arrow-wrapper position-absolute arrow-right-pos text-center">
               <i class="fa-solid fa-chevron-right text-light arrow-scroll"></i>
@@ -88,17 +60,12 @@
             <div @click="scrollRgt('topAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
-            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="topAlbum">
-              <CardComponent
-              v-for="(info, index) in store.topRatedList"
-              :key="index"
-              :source="info.poster_path"
-              :title="info.title"
-              :subtitle="info.original_title"
-              :language="info.original_language"
-              :vote="info.vote_average"
-              :plot="info.overview"
-              />
+            <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar"
+              ref="topAlbum">
+
+              <CardComponent class="me-2" v-for="(info, index) in store.topRatedList" :key="index" :source="info.poster_path"
+                :title="info.title" :subtitle="info.original_title" :language="info.original_language"
+                :vote="info.vote_average" :plot="info.overview" />
             </div>
           </div>
           <!--series-->
@@ -113,19 +80,11 @@
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
             <div class="d-flex justify-content-center overflow-x-auto text-light album-wrapper" ref="seriesAlbum">
-              <CardComponent
-              v-for="(info, index) in store.seriesList"
-              :key="index"
-              :source="info.poster_path"
-              :title="info.name"
-              :subtitle="info.original_name"
-              :language="info.original_language"
-              :vote="info.vote_average"
-              :plot="info.overview"
-              />
+              <CardComponent class="me-2" v-for="(info, index) in store.seriesList" :key="index" :source="info.poster_path"
+                :title="info.name" :subtitle="info.original_name" :language="info.original_language"
+                :vote="info.vote_average" :plot="info.overview" />
             </div>
           </div>
-          
         </div>
       </div>
     </div>
@@ -133,7 +92,6 @@
 </template>
 
 <script>
-import TopCardComponent from "./subcomponents/TopCardComponent.vue";
 import CardComponent from "./subcomponents/CardComponent.vue";
 import TicketComponent from "./subcomponents/TicketComponent.vue";
 import { store } from "../assets/data/store.js";
@@ -142,7 +100,6 @@ export default {
   components: {
     CardComponent,
     TicketComponent,
-    TopCardComponent,
   },
   data() {
     return {
@@ -159,14 +116,42 @@ export default {
     scrollRgt(el) {
       this.$refs[el].scrollBy({
         left: -900,
-        behavior:"smooth"
+        behavior: "smooth"
       });
+    },
+    scrollTopTen() {
+      const topTenScroll = document.getElementById("topTen-cards");
+      topTenScroll.scrollTo({
+        top: 0,
+        right: -1000,
+        behavior: "smooth"
+      });
+      
     }
   },
+  mounted() {
+    this.scrollTopTen();
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+
+.card-component-wrapper {
+  width: 180px;
+  height: 250px;
+  margin-left: 140px;
+  margin-top: 120px;
+  position: relative;
+  top: -60px;
+  right: -60px;
+  z-index: 5;
+}
+
+.number-wrapper {
+  position: absolute;
+  top: 30px;
+}
 
 .arrow-wrapper {
   border-radius: 5px;
@@ -178,14 +163,14 @@ export default {
 
 .arrow-right-pos {
   top: 125px;
-  right:10px;
-  z-index:1100;
+  right: 10px;
+  z-index: 1100;
 }
 
 .arrow-left-pos {
   top: 125px;
-  left:10px;
-  z-index:1100;
+  left: 10px;
+  z-index: 1100;
 }
 
 .arrow-wrapper-watch {
@@ -198,19 +183,20 @@ export default {
 
 .arrow-right-watch-pos {
   top: 115px;
-  right:10px;
-  z-index:1100;
+  right: 10px;
+  z-index: 1100;
 }
 
 .arrow-left-watch-pos {
   top: 115px;
-  left:10px;
-  z-index:1100;
+  left: 10px;
+  z-index: 1100;
 }
 
 .arrow-scroll {
   font-size: 5rem;
 }
+
 .main-wrapper {
   z-index: 1000;
 }

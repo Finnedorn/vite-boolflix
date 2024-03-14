@@ -1,5 +1,5 @@
 <template>
-  <div class="col-2 card-wrapper position-relative overflow-hidden mx-1 rounded-1">
+  <div class="col-2 card-wrapper position-relative overflow-hidden rounded-1">
     <div>
       <img :src="(source)? 'http://image.tmdb.org/t/p/w342' + source : '../../../images/movie_missing.png'" :alt="title" />
     </div>

@@ -9,7 +9,7 @@
                             <img src="../assets/images/Boolflix-16-11-2023.png" alt="boolflix-logo-png">
                         </div>
                         <ul class="pt-2 d-none d-lg-flex">
-                            <li v-for="(el,index) in navbarArr" :key="index"><a href="#" class=" text-decoration-none text-light ms-4 ">{{el}}</a></li>
+                            <li v-for="(el,index) in navbarArr" :key="index"><a id="nav-names" href="#" class=" nav-voice text-decoration-none text-light ms-4 ">{{el}}</a></li>
                         </ul>
                     </div>
                     <div class="input-group mb-3 w-25 pt-2">
@@ -45,7 +45,7 @@
             <div class="position-absolute settings-wrapper d-flex align-items-center">
                 <div class="mute-btn-wrapper d-flex justify-content-center me-3">
                     <button id="mute-btn" class="btn p-2 rounded-5" @click=volumeOn()>
-                        <i id="mute-icon" class="fa-solid fa-volume-xmark"></i>
+                        <i id="mute-icon" class="fa-solid fa-volume-high"></i>
                     </button>
                 </div>
                 <div class="pegi-wrapper p-2">
@@ -100,6 +100,13 @@
   
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
+
+.nav-voice {
+    &:hover {
+        color: rgb(144, 144, 144) !important;
+        transition: all 0.3s;
+    }
+}
 
 
 #mute-icon {

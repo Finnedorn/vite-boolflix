@@ -37,7 +37,10 @@
             </div>
             
             <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar" ref="movieAlbum">
+              <TopCardComponent
               
+              />
+
               <CardComponent
               v-for="(info, index) in store.movieList"
               :key="index"

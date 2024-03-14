@@ -1,6 +1,6 @@
 <template>
-    <div class=" container-fluid bg-my-black g-0 overflow-hidden">
-        <div class="g-0 position-relative header-wrapper overflow-hidden">
+    <div class=" container-fluid bg-my-black g-0">
+        <div class="g-0 position-relative header-wrapper">
             <div class=" position-absolute logo-wrapper">
                 <div class="container-fluid nav-shadow"></div>
                 <div class="px-5 d-flex justify-content-between align-items-center py-3">
@@ -14,14 +14,34 @@
                                     @click="$emit('navClick', el)">{{ el }}</a></li>
                         </ul>
                     </div>
-                    <div class="input-group mb-3 w-25 pt-2">
+
+                    <div class="input-group mb-3 w-25 pt-2 d-none d-md-flex">
                         <input type="text" class="form-control" placeholder="Film, serietv..." v-model="filterSearch">
                         <button class="btn btn-outline-secondary btn-search" type="button" id="button-addon2"
                             @click="$emit('movieSearcher', filterSearch)">Search</button>
                     </div>
+                    <div class="d-md-none text-light fs-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
                 </div>
             </div>
-            <div class="position-absolute main-serie-wrapper ">
+            <div class="p-4 d-md-none">
+                <div class=" card-movie rounded-3 overflow-hidden mt-5">
+                    <div class="serie-logo-wrapper mb-md-4">
+                        <img src="../assets/images/AAAABU1-JRbb0a_bBhPJeiAAGzO4WD7ZOmd0OvHlIhU8ybxBzHxmwuC2qQF4mVAGzQi0ulXc-Q0k_P4KykHJ73o_pcGdAEydHX-Y9VErmh-rvRLj.png"
+                            alt="avatar.logo">
+                    </div>
+                    <button type="button" class="btn btn-light fs-4 px-4 me-3 button-lg ms-2 ">
+                        <i class="fa-solid fa-play me-2 "></i>
+                        Play
+                    </button>
+                    <button type="button" class="btn fs-4 px-4 info-btn text-light ">
+                        <i class="fa-solid fa-circle-info me-2 fs-3"></i>
+                        Infos
+                    </button>
+                </div>
+            </div>
+            <div class="position-absolute main-serie-wrapper d-none d-md-block">
                 <div class="d-flex text-light align-items-center ps-5">
                     <div class="net-logo-wrapper">
                         <img src="../assets/images/Netflix-N-Symbol-logo-red-transparent-RGB-png-e1684581799529.png"
@@ -58,7 +78,7 @@
                     16+
                 </div>
             </div>
-            <div class="video-wrapper position-absolute ">
+            <div class="video-wrapper position-absolute d-none d-md-block">
                 <video id="myVideo" src="../../public/images/Avatar_ The Last Airbender _ Official Teaser _ Netflix.mp4"
                     autoplay muted loop></video>
             </div>
@@ -235,6 +255,14 @@ video {
     }
 }
 
+.card-movie {
+    background-image: url(../assets/images/avatar-card-img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 300px 30px 30px 30px;
+}
+
 @media screen and (max-width: 992px) {
 
     .input-group {
@@ -269,5 +297,17 @@ video {
         width: 2800px;
     }
 
+}
+
+@media screen and (max-width: 480px) {
+    .logo>img {
+        width: 100px;
+    }
+
+    .serie-logo-wrapper {
+        margin-top: 30px;
+        width: 300px;
+        margin-bottom: 30px;
+    }
 }
 </style>

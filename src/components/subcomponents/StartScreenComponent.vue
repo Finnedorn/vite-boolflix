@@ -27,25 +27,25 @@
 </template>
 
 <script>
-    export default {
-        name: 'StartScreenComponent',
-        data() {
-            return {
-                
-            }
+export default {
+    name: 'StartScreenComponent',
+    data() {
+        return {
+
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
-
 h1 {
     font-size: 4rem;
 }
+
 .start-screen-wrapper {
     height: 100vh;
-    padding-top: 300px
-};
+    padding-top: 300px;
+}
 
 .avatar-wrapper {
     border-radius: 5px;
@@ -78,5 +78,64 @@ h1 {
     transition: all 0.5s;
 }
 
+@media screen and (max-width: 992px) {
+    .start-screen-wrapper {
+        height: 100vh;
+        padding-top: 150px;
+    }
+
+    .avatar-wrapper {
+        border-radius: 5px;
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+    }
+
+    .plus-wrapper {
+        color: grey;
+        border-radius: 5px;
+        width: 150px;
+        height: 150px;
+        font-size: 6rem;
+    }
+
+    .avatar-text {
+        font-size: 2rem;
+        color: grey;
+        padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .start-screen-wrapper {
+        height: 100vh;
+        padding-top: 100px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .avatar-wrapper {
+        border-radius: 5px;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+    }
+
+    .plus-wrapper {
+        color: grey;
+        border-radius: 5px;
+        width: 80px;
+        height: 80px;
+        font-size: 3rem;
+    }
+
+    .avatar-text {
+        font-size: 1rem;
+        color: grey;
+        padding-top: 15px;
+    }
+}
 
 </style>

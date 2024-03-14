@@ -5,8 +5,8 @@
       <div class="container-fluid p-2 bg-my-black main-wrapper">
         <div class="container-fluid g-0">
           <!--Continue-->
-          <div class="position-relative">
-            <h1 class="pt-4 text-light ms-5">
+          <div class="position-relative my-md-3 ">
+            <h1 class="pt-4 text-light ms-5 mb-md-4">
               Continue Watching
             </h1>
             <div @click="scrollLft('watchingAlbum')"
@@ -34,13 +34,13 @@
             <div @click="scrollRgt('movieAlbum')" class=" arrow-wrapper position-absolute arrow-left-pos text-center">
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
-            <div id="topTen-cards" class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar"
+            <div id="topTen-cards"
+              class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar"
               ref="movieAlbum">
               <div v-for="(info, index) in store.movieList.slice(0, 7)" :key="index" class="position-relative">
-                <CardComponent class="card-component-wrapper"
-                  :source="info.poster_path" :title="info.title" :subtitle="info.original_title"
-                  :language="info.original_language" :vote="info.vote_average" :plot="info.overview" 
-                />
+                <CardComponent class="card-component-wrapper" :source="info.poster_path" :title="info.title"
+                  :subtitle="info.original_title" :language="info.original_language" :vote="info.vote_average"
+                  :plot="info.overview" />
                 <div class="number-wrapper">
                   <div class="ms-4">
                     <img :src="store.topTen[index]" alt="title">
@@ -63,9 +63,9 @@
             <div class="d-flex justify-content-center py-4 overflow-x-auto text-light album-wrapper no-bar"
               ref="topAlbum">
 
-              <CardComponent class="me-2" v-for="(info, index) in store.topRatedList" :key="index" :source="info.poster_path"
-                :title="info.title" :subtitle="info.original_title" :language="info.original_language"
-                :vote="info.vote_average" :plot="info.overview" />
+              <CardComponent class="me-2" v-for="(info, index) in store.topRatedList" :key="index"
+                :source="info.poster_path" :title="info.title" :subtitle="info.original_title"
+                :language="info.original_language" :vote="info.vote_average" :plot="info.overview" />
             </div>
           </div>
           <!--series-->
@@ -80,9 +80,9 @@
               <i class="fa-solid fa-chevron-left text-light arrow-scroll"></i>
             </div>
             <div class="d-flex justify-content-center overflow-x-auto text-light album-wrapper" ref="seriesAlbum">
-              <CardComponent class="me-2" v-for="(info, index) in store.seriesList" :key="index" :source="info.poster_path"
-                :title="info.name" :subtitle="info.original_name" :language="info.original_language"
-                :vote="info.vote_average" :plot="info.overview" />
+              <CardComponent class="me-2" v-for="(info, index) in store.seriesList" :key="index"
+                :source="info.poster_path" :title="info.name" :subtitle="info.original_name"
+                :language="info.original_language" :vote="info.vote_average" :plot="info.overview" />
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default {
         right: -1000,
         behavior: "smooth"
       });
-      
+
     }
   },
   mounted() {
@@ -136,7 +136,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .card-component-wrapper {
   width: 180px;
   height: 250px;
@@ -182,13 +181,13 @@ export default {
 }
 
 .arrow-right-watch-pos {
-  top: 115px;
+  top: 130px;
   right: 10px;
   z-index: 1100;
 }
 
 .arrow-left-watch-pos {
-  top: 115px;
+  top: 130px;
   left: 10px;
   z-index: 1100;
 }
@@ -207,5 +206,31 @@ export default {
 
 .top-card {
   z-index: 1000;
+}
+
+@media screen and (max-width: 992px) {
+
+  .arrow-wrapper-watch {
+    border-radius: 5px;
+    opacity: 0.9;
+    width: 80px;
+    background-color: rgba(4, 4, 4, 0.763);
+    padding: 60px 0px;
+  }
+
+  .arrow-right-watch-pos {
+    top: 95px;
+    right: 10px;
+    z-index: 1100;
+  }
+
+  .arrow-left-watch-pos {
+    top: 95px;
+    left: 10px;
+    z-index: 1100;
+  }
+
+
+
 }
 </style>

@@ -82,4 +82,11 @@ div>img {
     background-color: $netflix-red;
 }
 
+@media screen and (max-width: 992px) {
+    .card-wrapper {
+        width: 250px;
+    }
+    
+}
+
 </style>
